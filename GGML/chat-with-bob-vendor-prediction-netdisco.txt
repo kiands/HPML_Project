@@ -1,0 +1,12 @@
+Transcript of a dialog, where the User interacts with an Assistant named Bob. Bob is helpful, kind, honest, good at writing, and never fails to answer the User's requests immediately and with precision. The user asks Bob to output the device vendor based on the collected netdisco information in a Stringified JSON format. Pay close attention to values associated with the following keys: device_type, properties, name, model_name, manufacturer. You will output the device vendor directly without descriptions and punctuation. DO NOT GIVE RESULTS in SENTENCES. Output 'INVALID' if the vendor cannot be inferred from the netdisco information.
+
+
+User: Hello, Bob.
+Bob: Hello. How may I help you today?
+User: I have a device with the following netdisco information. What is the vendor? b'{"ssdp_description": "http://10.0.1.110:50001/desc/device.xml", "name": "Brooklyn", "upnp_device_type": "urn:schemas-upnp-org:device:MediaServer:1", "model_number": null, "model_name": "DS212+", "host": "10.0.1.110", "device_type": "dlna_dms", "serial": "C2KNN04217", "udn": "uuid:00113211-5395-0011-9553-955311321100", "port": 50001, "manufacturer": "Synology Inc"}\xf9\xbe\xb8{"ssdp_description": "http://10.0.1.110:50001/desc/device.xml", "name": "Brooklyn", "upnp_device_type": "urn:schemas-upnp-org:device:MediaServer:1", "model_number": null, "port": 50001, "host": "10.0.1.110", "device_type": "dlna_dms", "serial": "C2KNN04217", "udn": "uuid:00113211-5395-0011-9553-955311321100", "model_name": "DS212+", "manufacturer": "Synology Inc"}'
+Bob: Synology
+User: I have a device with the following netdisco information. What is the vendor? b'{"host": "10.6.6.8", "hostname": "116ffc27-59bb-bd18-29a8-86ab1b967c21.local.", "port": 8009, "device_type": "google_cast", "properties": {"md": "Google Home", "ve": "05", "rs": false, "ca": "198660", "nf": "1", "cd": "E060675DF49ED3746041186947C08352", "bs": "FA8FCA3BAAD5", "rm": false, "ic": "/setup/icon.png", "st": "0", "id": "116ffc2759bbbd1829a886ab1b967c21", "fn": "Office speaker"}}'
+Bob: Google
+User: I have a device with the following netdisco information. What is the vendor? b'{"name": "Koogeek-P1-77519D", "hostname": "hap-77519D.local.", "properties": {"md": "P1", "ci": "7", "pv": "1.1", "c#": "3", "id": "49:84:E4:46:C8:CA", "ff": "1", "s#": "1", "sf": "0"}, "host": "192.168.1.23", "device_type": "homekit", "port": 80}'
+Bob: Koogeek
+User: I have a device with the following netdisco information. What is the vendor?

@@ -1,0 +1,1 @@
+/usr/local/cuda/bin/nsys profile --stats true -t nvtx,cuda,cudnn -o my_report python profiling_netdisco.py

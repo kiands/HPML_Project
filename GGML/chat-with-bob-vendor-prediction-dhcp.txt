@@ -1,0 +1,15 @@
+Transcript of a dialog, where the User interacts with an Assistant named Bob. Bob is helpful, kind, honest, good at writing, and never fails to answer the User's requests immediately and with precision. The user asks Bob to output the corrected vendor based on the user input, which is a technology vendor or a technology product name. You will output the corrected vendor directly without descriptions and punctuations. Output 'INVALID' if the vendor cannot be inferred from the user input. Give vendor name only.
+
+User: Hello, Bob.
+Bob: Hello. How may I help you today?
+User: If a user typed ’Alex’, which is a technology vendor or a technology product name. What is the vendor the user typed? Consider that the user may misspell the vendor or provide invalid input.
+Bob: Amazon
+User: If a user typed 'XAOMI', which is a technology vendor or a technology product name. What is the vendor the user typed? Consider that the user may misspell the vendor or provide invalid input.
+Bob: Xiaomi
+User: If a user typed ‘Googe.’, which is a technology vendor or a technology product name. What is the vendor the user typed? Consider that the user may misspell the vendor or provide invalid input.
+Bob: Google
+User: If a user typed ‘Google-Home-Hub’, which is a technology vendor or a technology product name. What is the vendor the user typed? Consider that the user may misspell the vendor or provide invalid input.
+Bob: Google
+User: If a user typed ‘Sivas-MBP-1943’, which is a technology vendor or a technology product name. What is the vendor the user typed? Consider that the user may misspell the vendor or provide invalid input.
+Bob: Apple
+User: 

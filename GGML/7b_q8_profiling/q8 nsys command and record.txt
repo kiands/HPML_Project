@@ -1,0 +1,82 @@
+/usr/local/cuda/bin/nsys profile --stats true -t nvtx,cuda,cudnn -o my_report python profiling.py
+
+[4/7] Executing 'cuda_api_sum' stats report
+
+ Time (%)  Total Time (ns)  Num Calls     Avg (ns)      Med (ns)    Min (ns)    Max (ns)     StdDev (ns)                       Name                     
+ --------  ---------------  ----------  ------------  ------------  ---------  -----------  -------------  ---------------------------------------------
+     87.4  274,716,509,947      24,553  11,188,714.6  11,000,267.0  7,098,977   48,346,591    1,437,296.2  cudaDeviceSynchronize                        
+     11.7   36,767,676,853  28,389,894       1,295.1       1,256.0      1,100   10,345,509        2,527.1  cudaLaunchKernel                             
+      0.7    2,215,552,037     859,645       2,577.3       1,329.0      1,042   13,783,388       51,843.4  cudaMemcpy                                   
+      0.1      291,620,516           4  72,905,129.0  13,502,296.5     10,668  264,605,255  128,404,854.4  cudaMallocHost                               
+      0.0      124,114,213         295     420,726.1     308,635.0        937    5,065,018      414,674.2  cudaFree                                     
+      0.0      116,474,754      49,106       2,371.9       2,104.0      1,496      194,892        2,738.4  cudaMemcpyAsync                              
+      0.0       67,535,300           8   8,441,912.5      10,358.5        399   59,296,738   20,737,663.0  cudaFreeHost                                 
+      0.0       52,386,659      24,553       2,133.6       1,940.0      1,580      391,006        2,680.6  cudaMemcpy2DAsync                            
+      0.0       45,044,632           8   5,630,579.0         753.0        647   45,039,255   15,923,509.7  cudaStreamCreateWithFlags                    
+      0.0       13,356,267         302      44,226.0      46,671.0      1,468      241,281       31,151.3  cudaMalloc                                   
+      0.0        2,956,378         160      18,477.4       1,025.5        863      207,314       53,329.9  cudaMemsetAsync                              
+      0.0        1,054,300          34      31,008.8       2,818.0      2,182      950,709      162,509.3  cudaMemset                                   
+      0.0          945,532       1,818         520.1         241.0        174        6,654          674.6  cudaEventCreateWithFlags                     
+      0.0          513,061       1,214         422.6         188.0        142      116,356        3,369.2  cudaOccupancyMaxActiveBlocksPerMultiprocessor
+      0.0          421,328       1,800         234.1         209.0        183        3,005           96.9  cudaEventDestroy                             
+      0.0          123,821         800         154.8         151.0        133        1,762           61.8  cudaStreamGetCaptureInfo_v2_v11030           
+      0.0           76,348         766          99.7          91.0         60          396           37.2  cuGetProcAddress_v2                          
+      0.0           42,621         160         266.4         243.0        224        2,085          167.1  cudaEventRecord                              
+      0.0           26,454           1      26,454.0      26,454.0     26,454       26,454            0.0  cudaGetDeviceProperties_v2_v12000            
+      0.0            2,596           1       2,596.0       2,596.0      2,596        2,596            0.0  cudaEventQuery                               
+      0.0              916           2         458.0         458.0        356          560          144.2  cuInit                                       
+      0.0              847           3         282.3         115.0         91          641          310.8  cuModuleGetLoadingMode                       
+
+[5/7] Executing 'cuda_gpu_kern_sum' stats report
+
+ Time (%)  Total Time (ns)  Instances  Avg (ns)   Med (ns)   Min (ns)  Max (ns)   StdDev (ns)                                                  Name                                                
+ --------  ---------------  ---------  ---------  ---------  --------  ---------  -----------  ----------------------------------------------------------------------------------------------------
+     87.1  274,925,158,675  5,481,000   50,159.7   30,241.0    28,096  2,074,708     27,697.0  void mul_mat_vec_q<(int)32, (int)8, block_q8_0, (int)2, &vec_dot_q8_0_q8_1>(const void *, const voi…
+      2.0    6,399,106,160    780,416    8,199.6    7,968.0     6,080    843,978      2,239.5  void cutlass::Kernel<cutlass_75_wmma_tensorop_h161616gemm_16x16_32x1_tn_align1>(T1::Params)         
+      1.7    5,383,453,763  5,524,200      974.5      960.0       927     17,504         50.5  quantize_q8_1(const float *, void *, int, int)                                                      
+      1.6    5,194,099,978     43,200  120,233.8   75,408.5    51,264  2,907,451     97,141.5  void mul_mat_q8_0<(bool)0>(const void *, const void *, float *, int, int, int, int, int)            
+      1.4    4,397,276,862    585,728    7,507.4    7,328.0     5,728  1,351,375      2,806.4  void cutlass::Kernel<cutlass_80_wmma_tensorop_h161616gemm_16x16_32x1_tn_align2>(T1::Params)         
+      0.8    2,595,028,007  1,595,945    1,626.0    1,632.0     1,567      9,856         61.7  void rms_norm_f32<(int)1024>(const float *, float *, int, float)                                    
+      0.8    2,513,701,246  2,357,088    1,066.4    1,056.0       863     12,417         95.4  add_f32(const float *, const float *, float *, int, int)                                            
+      0.8    2,427,446,427  2,381,641    1,019.2    1,056.0       895     31,489        139.9  mul_f32(const float *, const float *, float *, int, int)                                            
+      0.6    1,817,566,596    785,696    2,313.3    2,272.0     1,887    236,642        526.0  soft_max_f32(const float *, float *, int)                                                           
+      0.5    1,611,413,701  1,571,392    1,025.5    1,024.0       959     19,584        148.1  void cpy_f32_f16<&cpy_1_f32_f16>(const char *, char *, int, int, int, int, int, int, int, int, int,…
+      0.5    1,548,003,739  1,571,392      985.1      992.0       895     25,248         91.0  void rope<float, (bool)1>(const T1 *, T1 *, int, const int *, float, int, float, float, float, rope…
+      0.4    1,382,064,454  1,571,617      879.4      864.0       831     41,313        181.9  void dequantize_block<(int)1, (int)1, &convert_f32, __half>(const void *, T4 *, int)                
+      0.4    1,363,660,157  1,571,617      867.7      864.0       831     56,993        124.0  void dequantize_block<(int)1, (int)1, &convert_f16, float>(const void *, T4 *, int)                 
+      0.3      840,594,702     97,984    8,578.9    8,512.0     6,496    230,882      1,838.7  ampere_h16816gemm_64x128_ldg8_stages_32x6_tn                                                        
+      0.2      782,376,142    785,696      995.8      992.0       959     19,136        141.6  void cpy_f32_f16<&cpy_1_f32_f32>(const char *, char *, int, int, int, int, int, int, int, int, int,…
+      0.2      694,674,479    785,696      884.2      864.0       831     11,457         94.2  silu_f32(const float *, float *, int)                                                               
+      0.2      681,429,852    785,696      867.3      864.0       831     10,369         78.3  scale_f32(const float *, float *, float, int)                                                       
+      0.2      595,205,591     52,960   11,238.8   10,592.0     9,600    391,268      3,740.9  ampere_h16816gemm_256x128_ldg8_stages_32x3_tn                                                       
+      0.1      360,235,130     45,024    8,001.0    7,968.0     6,720     24,480        648.2  ampere_h16816gemm_128x64_ldg8_stages_32x6_tn                                                        
+      0.0       44,228,175      2,496   17,719.6   17,216.0    16,640  1,111,147     22,232.5  void gemmSN_TN_kernel_half<(int)256, (int)8, (int)2, (int)4, (int)7, cublasGemvTensorBatched<const …
+      0.0       37,093,400        225  164,859.6   94,369.0    84,000    744,838     90,666.5  void dequantize_block<(int)32, (int)1, &dequantize_q8_0, __half>(const void *, T4 *, int)           
+      0.0       32,668,920      1,888   17,303.5   17,248.0    16,832     17,920        231.8  void gemmSN_TN_kernel_half<(int)256, (int)8, (int)2, (int)4, (int)8, cublasGemvTensorBatched<const …
+      0.0       31,973,330      2,496   12,809.8   12,672.0    12,128    301,539      5,798.9  void gemmSN_TN_kernel_half<(int)256, (int)8, (int)2, (int)4, (int)7, cublasGemvTensorStridedBatched…
+      0.0       25,281,225      1,888   13,390.5   13,376.0    12,961     14,208        167.0  void gemmSN_TN_kernel_half<(int)256, (int)8, (int)2, (int)4, (int)8, cublasGemvTensorStridedBatched…
+      0.0       13,379,185         64  209,049.8  209,298.0   199,330    212,002      2,047.4  void cutlass::Kernel<cutlass_80_tensorop_h16816gemm_256x64_32x4_tn_align8>(T1::Params)              
+      0.0       10,217,941        129   79,208.8   76,065.0    72,417    609,765     47,108.3  ampere_h1688gemm_128x128_ldg8_stages_32x1_tn                                                        
+      0.0        6,650,808         32  207,837.8  208,369.5   197,761    210,242      2,505.5  ampere_h16816gemm_128x128_ldg8_stages_64x3_tn                                                       
+      0.0        5,327,071      6,176      862.5      864.0       831        897         14.7  k_compute_batched_ptrs(const __half *, const __half *, __half *, const void **, void **, int, int, …
+      0.0        3,401,796        224   15,186.6   15,232.0    14,624     15,616        226.5  void gemmSN_TN_kernel_half<(int)256, (int)8, (int)2, (int)4, (int)6, cublasGemvTensorBatched<const …
+      0.0        2,564,986        224   11,450.8   11,456.0    11,040     12,032        174.9  void gemmSN_TN_kernel_half<(int)256, (int)8, (int)2, (int)4, (int)6, cublasGemvTensorStridedBatched…
+      0.0          839,468         32   26,233.4   26,241.0    25,473     26,721        301.1  void cutlass::Kernel<cutlass_80_tensorop_h16816gemm_256x64_32x4_tn_align2>(T1::Params)              
+      0.0          605,891         32   18,934.1   18,944.0    18,624     19,105        109.5  void cutlass::Kernel<cutlass_80_tensorop_h16816gemm_64x64_32x6_tn_align2>(T1::Params)               
+
+[6/7] Executing 'cuda_gpu_mem_time_sum' stats report
+
+ Time (%)  Total Time (ns)   Count   Avg (ns)  Med (ns)  Min (ns)   Max (ns)   StdDev (ns)      Operation     
+ --------  ---------------  -------  --------  --------  --------  ----------  -----------  ------------------
+     81.9      707,843,383  123,055   5,752.3     320.0       255  13,697,138    133,146.8  [CUDA memcpy HtoD]
+     17.9      154,860,455   24,553   6,307.2   5,600.0     5,535   1,497,196     11,399.0  [CUDA memcpy DtoH]
+      0.2        1,841,007      194   9,489.7     608.0       256     952,936     87,418.4  [CUDA memset]     
+
+[7/7] Executing 'cuda_gpu_mem_size_sum' stats report
+
+ Total (MB)   Count   Avg (MB)  Med (MB)  Min (MB)  Max (MB)  StdDev (MB)      Operation     
+ ----------  -------  --------  --------  --------  --------  -----------  ------------------
+  7,970.022  123,055     0.065     0.002     0.000   139.264        1.508  [CUDA memcpy HtoD]
+  3,533.952   24,553     0.144     0.128     0.128    39.424        0.299  [CUDA memcpy DtoH]
+  1,073.812      194     5.535     0.000     0.000   536.871       54.370  [CUDA memset]     
+
