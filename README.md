@@ -43,3 +43,35 @@ The second way is to try large language models. We assume that the large languag
 Similar to the previous section, the example commands are written in the readme of each folders (SVM, BERT_Approach, GGML, Huggingface). Enter the folder to access.
 
 ### Results (including charts/tables) and your observations
+System-local: 13900K, RTX 4080 with 80GB/s memory bandwidth; System-HPC: 4*V100
+1. SVM Precision compared to BERT (Small example)
+### Precision table
+|          | SVM with TFIDF | BERT   |
+|----------|----------------|--------|
+| Apple    | 0.93           | 0.99966|
+| Google   | 0.83           | 0.998  |
+| Amazon   | 0.97           | 0.986  |
+| Microsoft| 0.73           | 1      |
+2. BERT experiments and profiling results - CPU
+| Configuration         | Model Load Time (s) | Inference Time (s) | Memory Bandwidth (GB/s) |
+|-----------------------|---------------------|--------------------|-------------------------|
+| CPU(Pytorch): 1 Thread| 0.61                | 6.15               | 26.71                   |
+| CPU(Pytorch): 2 Threads| 0.62               | 4.89               | 35.99                   |
+| CPU(Pytorch): 4 Threads| 0.67               | 4.06               | 50.32                   |
+| CPU(ONNX): 1 Thread   | 0.36                | 9.25               | 17.97                   |
+| CPU(ONNX): 2 Threads  | 0.45                | 5.00               | 11.48                   |
+| CPU(ONNX): 4 Threads  | 0.50                | 24.10              | 7.67                    |
+3. BERT experiments and profiling results - GPU
+| GPU Configuration | Time to Load Model (s) | Time to Inference (s) |
+|-------------------|------------------------|-----------------------|
+| Single V100       | 2.97                   | 47.31                 |
+| 4x V100 DP        | 3.09                   | 55.27                 |
+| 4x V100 DDP       | 4.84                   | 24.33                 |
+4. The time used to inference 20 records on different model-template combinations
+|                   | 7B 4bit | 7B 8bit |
+|-------------------|---------|---------|
+| Detailed Template | 3.252s  | 10.887s |
+| Vague Template    | 15.252s | 30.023s |
+5. The influence on loss from different fine-tune templates
+![llm-fine-tune-loss](./llm-fine-tune-loss.png)
+
