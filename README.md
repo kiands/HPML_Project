@@ -78,3 +78,12 @@ System-local: 13900K, RTX 4080 with 80GB/s memory bandwidth; System-HPC: 4*V100
 5. The influence on loss from different fine-tune templates
 ![llm-fine-tune-loss](./llm-fine-tune-loss.png)
 
+Observations:
+1. SVM always has lower accuracy than BERT. For example, its accuracy for Apple label prediction is 0.93 while BERT is 0.9996.
+2. BERT runs not so slow on CPU, 4 threads with 100 records each on 13900K uses less than 5 seconds while RTX 4080 uses 2.1 seconds. V100 and multi V100 are very slow comparatively.
+3. LLAMA needs to have good prompt engineering to make it output short and formatted result. Or it is nearly useless.
+4. 4-bit quantize sometimes reduces almost 80% of the time when compared with 8-bit quantize.
+5. Quantize itself takes some time to convert the data but it is useful.
+6. Format of fine-tune data influences the fine-tune loss far more than other hyperparameters.
+7. BERT is good. In many classes, it can have nearly 100% accuracy. Its speed is fast enough, 4 concurrent model instances on modern CPUs without memory bandwidth is as good as GPU inference. The other boosting methods may decrease performance. However they may have better compatibility. The future model inference deployment might have more and more accelerators other than GPU.
+8. Truncated LLMs are not good in those tasks. Performances are restricted and we need to use a lot more tokens to justify its output. If we have other smaller models, they might be able to run faster and do better.
