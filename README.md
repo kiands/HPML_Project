@@ -38,3 +38,8 @@ The second way is to try large language models. We assume that the large languag
 - `BERT_Approach`: data and code used to show the effect of BERT approach. Detailed code structure description is in the folder.
 - `GGML`: data and code used to show the effect of GGML(llama.cpp) based LLM approach. Detailed code structure description is in the folder.
 - `Huggingface`: data and code used to show the effect of Huggingface based LLM approach, mainly fine-tune. Detailed code structure description is in the folder.
+
+### Example commands to execute the code
+Similar to the previous section, the example commands are written in the readme of each folders (SVM, BERT_Approach, GGML, Huggingface). Enter the folder to access.
+
+### Results (including charts/tables) and your observations

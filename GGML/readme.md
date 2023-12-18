@@ -20,6 +20,10 @@ python3 -m pip install -r requirements.txt
 python convert.py <path_to_your_downloaded_llama-2-7b_model>
 5. Quantize the model:
 ./quantize <path_to_your_downloaded_llama-2-7b_model>/ggml-model-f16.gguf <path_to_your_downloaded_llama-2-7b_model>/ggml-model-q4_0.gguf q4_0
+6. enter 7b_q4_profiling, example command can be:
+python profiling_device_name.py
+7. nsys command:
+/usr/local/cuda/bin/nsys profile --stats true -t nvtx,cuda,cudnn -o my_report python profiling_netdisco.py
 
 Then you can follow the `llama.cpp` instructions to convert meta’s original llama-2 models to `.gguf`
 And you need to install CUDA enabled llama.cpp’s python binding to run the inference:
