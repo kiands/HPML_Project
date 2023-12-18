@@ -25,13 +25,13 @@ Here we decide to choose two ways to do this special mapping task. The first way
 The second way is to try large language models. We assume that the large language models have similar ability to recognize some specific patterns inside the strings we want to map. We may try to do the experiment at out of box status and also try fine-tuning. Due to the limited hardware resources, we will apply quantize, fine-tune with LoRA at the same time. Different bit depth while doing quantization will be considered. We will profile it using the nsys tool at the same time.
 
 ### Milestones
-(1) Accomplish good extraction accuracy on BERT model classification. (precision > 99% mostly) Completed
-(2) Check the propability of using SVM. Completed
-(3) Successfully adapted the model into onnx runtime and measure the performance. Completed
-(4) Run different types of deployment performance test: multi thread CPU, multi thread CPU ONNX, GPU, multi GPU DP, multi GPU DDP. Completed
-(5) Test the availability of llama-2 and try prompt engineering, measure the influence of prompts. Completed
-(6) Measure the influence of quantize. Completed
-(7) Test the fine-tune of llama-2 and try to find out the most important factor that influences the effectiveness. Completed
+- (1) Accomplish good extraction accuracy on BERT model classification. (precision > 99% mostly) Completed
+- (2) Check the propability of using SVM. Completed
+- (3) Successfully adapted the model into onnx runtime and measure the performance. Completed
+- (4) Run different types of deployment performance test: multi thread CPU, multi thread CPU ONNX, GPU, multi GPU DP, multi GPU DDP. Completed
+- (5) Test the availability of llama-2 and try prompt engineering, measure the influence of prompts. Completed
+- (6) Measure the influence of quantize. Completed
+- (7) Test the fine-tune of llama-2 and try to find out the most important factor that influences the effectiveness. Completed
 
 ### Description of the repository and code structure
 - `SVM`: data and code used to show the effect of SVM approach. Detailed code structure description is in the folder.
