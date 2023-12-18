@@ -34,7 +34,7 @@ The second way is to try large language models. We assume that the large languag
 (7) Test the fine-tune of llama-2 and try to find out the most important factor that influences the effectiveness. Completed
 
 ### Description of the repository and code structure
-**`SVM`**: data and code used to show the effect of SVM approach. Detailed code structure description is in the folder.
-**`BERT_Approach`**: data and code used to show the effect of BERT approach. Detailed code structure description is in the folder.
-**`GGML`**: data and code used to show the effect of GGML(llama.cpp) based LLM approach. Detailed code structure description is in the folder.
-**`Huggingface`**: data and code used to show the effect of Huggingface based LLM approach, mainly fine-tune. Detailed code structure description is in the folder.
+- `SVM`: data and code used to show the effect of SVM approach. Detailed code structure description is in the folder.
+- `BERT_Approach`: data and code used to show the effect of BERT approach. Detailed code structure description is in the folder.
+- `GGML`: data and code used to show the effect of GGML(llama.cpp) based LLM approach. Detailed code structure description is in the folder.
+- `Huggingface`: data and code used to show the effect of Huggingface based LLM approach, mainly fine-tune. Detailed code structure description is in the folder.
