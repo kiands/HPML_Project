@@ -18,6 +18,7 @@ cd llama.cpp
 python3 -m pip install -r requirements.txt
 4. Convert the downloaded model:
 python convert.py <path_to_your_downloaded_llama-2-7b_model>
+important: this will place a .gguf intermediate model under same level of llama-7b model
 5. Quantize the model:
 ./quantize <path_to_your_downloaded_llama-2-7b_model>/ggml-model-f16.gguf <path_to_your_downloaded_llama-2-7b_model>/ggml-model-q4_0.gguf q4_0
 6. enter 7b_q4_profiling, example command can be:
