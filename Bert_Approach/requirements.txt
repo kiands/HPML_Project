@@ -7,3 +7,4 @@ wandb
 torch
 numpy
 jupyter
+onnxruntime
