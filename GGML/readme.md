@@ -25,6 +25,9 @@ python profiling_device_name.py
 7. nsys command:
 /usr/local/cuda/bin/nsys profile --stats true -t nvtx,cuda,cudnn -o my_report python profiling_netdisco.py
 
+![location-of-quantized-models](./location-of-quantized-models.png)
+This picture shows where to output the quantized models. You will not be able to run the code if you do not put models there.
+
 Then you can follow the `llama.cpp` instructions to convert meta’s original llama-2 models to `.gguf`
 And you need to install CUDA enabled llama.cpp’s python binding to run the inference:
 
